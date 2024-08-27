@@ -15,6 +15,10 @@ const userSchema = mongoose.Schema(
       lowercase: true,
       validate: [validator.isEmail, "Please provide a valid email address"],
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
     picture: {
       type: String,
       default:
