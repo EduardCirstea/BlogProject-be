@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 const { ObjectId } = mongoose.Schema.Types;
-const blogSchema = mongoose.Schema(
+const articleSchema = mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -9,12 +9,12 @@ const blogSchema = mongoose.Schema(
     },
     title: {
       type: String,
-      required: [true, "Title is required."],
+      required: [true, "Titul este obligatoriu."],
       trim: true,
     },
     content: {
       type: String,
-      required: [true, "Content  is required."],
+      required: [true, "Contentul este obligatoriu."],
       trim: true,
     },
     picture: {
@@ -26,14 +26,19 @@ const blogSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    data: {
+      type: Date,
+      required: true,
+      default: Date.now,
+    },
     reported: {
       type: Boolean,
       required: true,
       default: false,
     },
-    locatie: {
+    location: {
       type: String,
-      required: [true, "Locatie este obligatorie."],
+      required: [true, "Locatia este obligatorie."],
       trim: true,
     },
     lat: {
@@ -48,14 +53,15 @@ const blogSchema = mongoose.Schema(
       type: String,
       required: [true, "Activitatea este obligatorie."],
       trim: true,
+      enum: ["drumetie", "sport", "cultural", "educational", "relaxare"],
     },
-    anotimp: {
+    season: {
       type: String,
-      required: [true, "Anotimp este obligatoriu."],
+      required: [true, "Anotimpul este obligatoriu."],
       enum: ["Primavara", "Vara", "Toamna", "Iarna"],
       trim: true,
     },
-    tara: {
+    country: {
       type: String,
       enum: [
         "United States of America",
@@ -92,32 +98,18 @@ const blogSchema = mongoose.Schema(
         "New Zealand",
         "Singapore",
       ],
+      required: true,
     },
-    pret: {
-      type: Number,
-      required: [true, "Pretul este obligatoriu."],
-      min: 0,
-    },
-    durata: {
-      type: Number,
-      required: [true, "Durata este obligatorie."],
-      min: 1,
-    },
-    transport: {
-      type: String,
-      required: [true, "Transport este obligatoriu."],
-      enum: ["Masina", "Avion", "Autobuz", "Tren"],
-      trim: true,
-    },
+
     files: [],
   },
   {
-    collection: "blog",
+    collection: "article",
     timestamps: true,
   }
 );
 
-const BlogModel =
-  mongoose.models.BlogModel || mongoose.model("BlogModel", blogSchema);
+const ArticleModel =
+  mongoose.models.ArticleModel || mongoose.model("ArticleModel", articleSchema);
 
-export default BlogModel;
+export default ArticleModel;
