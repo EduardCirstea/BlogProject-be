@@ -7,10 +7,10 @@ const commentsSchema = mongoose.Schema(
       required: true,
       ref: "User",
     },
-    article: {
+    blog: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: "Article",
+      ref: "Blog",
     },
 
     text: {

@@ -10,7 +10,6 @@ export const register = async (req, res, next) => {
       name,
       email,
       picture,
-      status,
       password,
     });
     const access_token = await generateToken(
@@ -39,7 +38,6 @@ export const register = async (req, res, next) => {
         name: newUser.name,
         email: newUser.email,
         isAdmin: newUser.isAdmin,
-        status: newUser.status,
         picture: newUser.picture,
       },
     });
@@ -77,7 +75,6 @@ export const login = async (req, res, next) => {
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,
-        status: user.status,
         picture: user.picture,
         token: access_token,
       },
@@ -117,7 +114,6 @@ export const refreshToken = async (req, res, next) => {
         _id: user._id,
         name: user.name,
         email: user.email,
-        status: user.status,
         picture: user.picture,
         token: access_token,
       },

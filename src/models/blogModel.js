@@ -31,7 +31,7 @@ const blogSchema = mongoose.Schema(
       required: true,
       default: false,
     },
-    locatie: {
+    location: {
       type: String,
       required: [true, "Locatie este obligatorie."],
       trim: true,
@@ -49,13 +49,13 @@ const blogSchema = mongoose.Schema(
       required: [true, "Activitatea este obligatorie."],
       trim: true,
     },
-    anotimp: {
+    season: {
       type: String,
       required: [true, "Anotimp este obligatoriu."],
       enum: ["Primavara", "Vara", "Toamna", "Iarna"],
       trim: true,
     },
-    tara: {
+    country: {
       type: String,
       enum: [
         "United States of America",
@@ -93,12 +93,12 @@ const blogSchema = mongoose.Schema(
         "Singapore",
       ],
     },
-    pret: {
+    price: {
       type: Number,
       required: [true, "Pretul este obligatoriu."],
       min: 0,
     },
-    durata: {
+    term: {
       type: Number,
       required: [true, "Durata este obligatorie."],
       min: 1,
